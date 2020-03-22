@@ -12,8 +12,7 @@ internal class IdleSingleObserver<T>(
     private val downstream: SingleObserver<in T>
 ) : Disposable,
     SingleObserver<T>, Runnable {
-    private val upstream =
-        AtomicReference<Disposable>()
+    private val upstream = AtomicReference<Disposable>()
 
     override fun onSubscribe(d: Disposable) {
         DisposableHelper.setOnce(upstream, d)

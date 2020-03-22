@@ -13,11 +13,11 @@ object IdleHandlerUtils {
     @MainThread
     @Throws(Exception::class)
     @JvmStatic
-    fun handle(runnable: Runnable?): IdleHandler {
+    fun handle(runnable: Runnable): IdleHandler {
         if (Looper.getMainLooper().thread !== Thread.currentThread()) {
             throw Exception("must call on main thread")
         }
-        return IdleHandler.handle(runnable!!)
+        return IdleHandler.handle(runnable)
     }
 
     @JvmStatic

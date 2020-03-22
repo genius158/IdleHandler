@@ -12,8 +12,7 @@ class IdleMaybeObserver<T> internal constructor(
     private val downstream: MaybeObserver<in T>
 ) : MaybeObserver<T>,
     Disposable, Runnable {
-    private val upstream =
-        AtomicReference<Disposable>()
+    private val upstream = AtomicReference<Disposable>()
 
     override fun onSubscribe(d: Disposable) {
         DisposableHelper.setOnce(upstream, d)

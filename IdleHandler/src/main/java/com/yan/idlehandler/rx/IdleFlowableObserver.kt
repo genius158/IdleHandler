@@ -14,8 +14,7 @@ class IdleFlowableObserver<T> internal constructor(
     private val downstream: Subscriber<in T>
 ) : Subscriber<T>,
     Subscription, Disposable, Runnable {
-    private val upstream =
-        AtomicReference<Subscription>()
+    private val upstream = AtomicReference<Subscription>()
 
     override fun onSubscribe(s: Subscription) {
         EndConsumerHelper.setOnce(upstream, s, javaClass)
