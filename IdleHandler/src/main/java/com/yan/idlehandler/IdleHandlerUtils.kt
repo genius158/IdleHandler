@@ -25,7 +25,7 @@ object IdleHandlerUtils {
         return ObservableTransformer { upstream: Observable<T> ->
             object : Observable<T>() {
                 override fun subscribeActual(observer: Observer<in T>) {
-                    upstream.subscribe(IdleObserver(observer, upstream))
+                    upstream.subscribe(IdleObserver(observer))
                 }
             }
         }
@@ -36,9 +36,7 @@ object IdleHandlerUtils {
         return SingleTransformer { upstream: Single<T> ->
             object : Single<T>() {
                 override fun subscribeActual(observer: SingleObserver<in T>) {
-                    upstream.subscribe(
-                        IdleSingleObserver(observer, upstream)
-                    )
+                    upstream.subscribe(IdleSingleObserver(observer))
                 }
             }
         }
@@ -49,9 +47,7 @@ object IdleHandlerUtils {
         return MaybeTransformer { upstream: Maybe<T> ->
             object : Maybe<T>() {
                 override fun subscribeActual(observer: MaybeObserver<in T>) {
-                    upstream.subscribe(
-                        IdleMaybeObserver(observer, upstream)
-                    )
+                    upstream.subscribe(IdleMaybeObserver(observer))
                 }
             }
         }
@@ -62,7 +58,7 @@ object IdleHandlerUtils {
         return FlowableTransformer { upstream: Flowable<T> ->
             object : Flowable<T>() {
                 override fun subscribeActual(observer: Subscriber<in T>) {
-                    upstream.subscribe(IdleFlowableObserver(observer, upstream))
+                    upstream.subscribe(IdleFlowableObserver(observer))
                 }
             }
         }
