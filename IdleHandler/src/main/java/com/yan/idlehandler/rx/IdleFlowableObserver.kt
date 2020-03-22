@@ -10,7 +10,7 @@ import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
 import java.util.concurrent.atomic.AtomicReference
 
-class IdleFlowableObserver<T> internal constructor(
+internal class IdleFlowableObserver<T>(
     private val downstream: Subscriber<in T>
 ) : Subscriber<T>,
     Subscription, Disposable, Runnable {

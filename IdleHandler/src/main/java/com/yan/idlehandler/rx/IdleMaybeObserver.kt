@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.internal.disposables.DisposableHelper
 import java.util.concurrent.atomic.AtomicReference
 
-class IdleMaybeObserver<T> internal constructor(
+internal class IdleMaybeObserver<T>(
     private val downstream: MaybeObserver<in T>
 ) : MaybeObserver<T>,
     Disposable, Runnable {
